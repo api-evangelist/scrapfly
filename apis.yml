@@ -10,10 +10,10 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Web Scraping
+  - AI
   - Data Extraction
   - Screenshots
-  - AI
+  - Web Scraping
 created: '2025-02-08'
 modified: '2026-03-16'
 url: >-
@@ -28,9 +28,9 @@ apis:
       data with AI.
     humanURL: https://scrapfly.io/
     tags:
-      - Web Scraping
       - Data Extraction
       - Screenshots
+      - Web Scraping
     properties:
       - type: Documentation
         url: https://scrapfly.io/docs/

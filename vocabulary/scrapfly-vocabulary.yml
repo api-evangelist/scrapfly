@@ -1,0 +1,114 @@
+aid: scrapfly-vocabulary
+name: Scrapfly Vocabulary
+description: >-
+  Vocabulary and taxonomy for web scraping, data extraction, and browser
+  automation concepts in the Scrapfly API platform.
+created: '2026-05-02'
+modified: '2026-05-02'
+terms:
+  - term: WebScraping
+    label: Web Scraping
+    definition: >-
+      Automated extraction of data from websites by programmatically
+      fetching HTML content and parsing the relevant information.
+    related: [DataExtraction, Crawler]
+
+  - term: ASP
+    label: Anti Scraping Protection
+    definition: >-
+      Scrapfly's bypass system that handles anti-bot measures including
+      CAPTCHAs, JavaScript challenges, browser fingerprinting, and
+      IP reputation filtering. Enabling ASP increases credit cost.
+    aliases:
+      - Anti-Bot Bypass
+      - Bot Detection Bypass
+
+  - term: JSRendering
+    label: JavaScript Rendering
+    definition: >-
+      Using a headless browser to execute JavaScript and render dynamic
+      content before capturing the page, required for SPAs and sites
+      that load content asynchronously.
+    related: [CloudBrowser]
+
+  - term: ProxyPool
+    label: Proxy Pool
+    definition: >-
+      A network of proxy servers used to route scraping requests through
+      different IP addresses. Scrapfly offers datacenter and residential
+      proxy pools across 190+ countries.
+
+  - term: Session
+    label: Scraping Session
+    definition: >-
+      A persistent browser context that maintains cookies and browser
+      fingerprint across multiple scraping requests to the same site,
+      enabling stateful scraping workflows.
+
+  - term: ExtractionTemplate
+    label: Extraction Template
+    definition: >-
+      A predefined schema for extracting structured data from a
+      specific type of web page (e.g., product pages, news articles),
+      applied using CSS selectors or XPath expressions.
+
+  - term: LLMExtraction
+    label: LLM-Powered Extraction
+    definition: >-
+      AI-powered data extraction using Large Language Model prompts to
+      identify and structure data from unstructured web content without
+      explicit selectors.
+
+  - term: WARC
+    label: Web ARChive Format
+    definition: >-
+      A file format for storing web crawl data including HTTP requests,
+      responses, and metadata. Used by Scrapfly's Crawler API for
+      archiving and processing crawled content.
+
+  - term: ApiCredit
+    label: API Credit
+    definition: >-
+      Scrapfly's billing unit. Each scraping request costs a variable
+      number of credits depending on enabled features (render_js, asp,
+      residential proxies, extraction).
+
+  - term: CorrelationId
+    label: Correlation ID
+    definition: >-
+      A customer-provided identifier that groups related scraping
+      requests together for monitoring and analytics purposes.
+
+  - term: WebhookDelivery
+    label: Webhook Delivery
+    definition: >-
+      Asynchronous delivery of scraping results to a customer-configured
+      endpoint instead of the synchronous API response.
+
+  - term: Fingerprinting
+    label: Browser Fingerprinting
+    definition: >-
+      The technique used by anti-bot systems to identify and block
+      automated browsers by analyzing unique browser characteristics.
+      Scrapfly rotates fingerprints to avoid detection.
+
+  - term: CloudBrowser
+    label: Cloud Browser
+    definition: >-
+      A cloud-hosted headless browser compatible with Playwright,
+      Puppeteer, and Selenium for complex browser automation scenarios.
+
+domains:
+  - name: Web Data Collection
+    description: Automated collection of data from websites at scale
+    tags:
+      - Scraping
+      - Crawling
+      - Data Engineering
+
+  - name: AI Data Extraction
+    description: Using AI models to extract structured data from unstructured web content
+    tags:
+      - LLM
+      - NLP
+      - Structured Data

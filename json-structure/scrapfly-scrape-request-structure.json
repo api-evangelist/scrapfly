@@ -1,0 +1,189 @@
+{
+  "title": "Scrapfly Scrape Request Structure",
+  "description": "JSON structure documentation for Scrapfly scrape API request parameters",
+  "type": "object",
+  "fields": [
+    {
+      "name": "key",
+      "type": "string",
+      "required": true,
+      "description": "API key from the Scrapfly dashboard"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "format": "uri",
+      "required": true,
+      "description": "Target URL to scrape (must be URL-encoded)"
+    },
+    {
+      "name": "render_js",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable headless browser rendering for JavaScript-heavy pages"
+    },
+    {
+      "name": "asp",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Enable Anti Scraping Protection bypass (increases credit cost)"
+    },
+    {
+      "name": "country",
+      "type": "string",
+      "required": false,
+      "description": "ISO 3166-1 alpha-2 country code for proxy location"
+    },
+    {
+      "name": "proxy_pool",
+      "type": "string",
+      "required": false,
+      "description": "Proxy network: public_datacenter_pool or residential_pool"
+    },
+    {
+      "name": "format",
+      "type": "string",
+      "required": false,
+      "default": "raw",
+      "description": "Response format: raw, clean_html, json, markdown, or text"
+    },
+    {
+      "name": "lang",
+      "type": "string",
+      "required": false,
+      "description": "Preferred language via Accept-Language header (e.g., en-US)"
+    },
+    {
+      "name": "headers",
+      "type": "object",
+      "required": false,
+      "description": "Custom HTTP headers as key-value pairs"
+    },
+    {
+      "name": "timeout",
+      "type": "integer",
+      "required": false,
+      "default": 150000,
+      "description": "Request timeout in milliseconds"
+    },
+    {
+      "name": "retry",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "Automatically retry failed requests"
+    },
+    {
+      "name": "rendering_wait",
+      "type": "integer",
+      "required": false,
+      "description": "Milliseconds to wait after page load before capturing (requires render_js)"
+    },
+    {
+      "name": "wait_for_selector",
+      "type": "string",
+      "required": false,
+      "description": "CSS/XPath selector to wait for before capturing content"
+    },
+    {
+      "name": "js",
+      "type": "string",
+      "required": false,
+      "description": "Base64-encoded custom JavaScript to execute on the page (max 16KB)"
+    },
+    {
+      "name": "screenshots",
+      "type": "string",
+      "required": false,
+      "description": "CSS selectors for element screenshots, or 'main' for viewport"
+    },
+    {
+      "name": "js_scenario",
+      "type": "string",
+      "required": false,
+      "description": "URL-encoded JSON scenario for page interactions (click, scroll, etc.)"
+    },
+    {
+      "name": "cache",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "description": "Cache the scrape response to avoid redundant requests"
+    },
+    {
+      "name": "cache_ttl",
+      "type": "integer",
+      "required": false,
+      "description": "Cache time-to-live in seconds"
+    },
+    {
+      "name": "cache_clear",
+      "type": "boolean",
+      "required": false,
+      "description": "Force cache refresh for the URL"
+    },
+    {
+      "name": "session",
+      "type": "string",
+      "required": false,
+      "description": "Named session for cookie/fingerprint persistence across requests"
+    },
+    {
+      "name": "session_sticky_proxy",
+      "type": "boolean",
+      "required": false,
+      "description": "Reuse the same proxy IP within the session"
+    },
+    {
+      "name": "extraction_template",
+      "type": "string",
+      "required": false,
+      "description": "Predefined extraction template name for structured data"
+    },
+    {
+      "name": "extraction_prompt",
+      "type": "string",
+      "required": false,
+      "description": "Natural language LLM prompt for custom data extraction"
+    },
+    {
+      "name": "extraction_model",
+      "type": "string",
+      "required": false,
+      "description": "AI auto-extraction model for predefined content types"
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "required": false,
+      "description": "Store results and screenshots for debugging in the dashboard"
+    },
+    {
+      "name": "correlation_id",
+      "type": "string",
+      "required": false,
+      "description": "Group related scrape requests by a shared identifier"
+    },
+    {
+      "name": "tags",
+      "type": "array",
+      "items": { "type": "string" },
+      "required": false,
+      "description": "Tags for categorizing scrapes in the dashboard"
+    },
+    {
+      "name": "webhook_name",
+      "type": "string",
+      "required": false,
+      "description": "Webhook name for asynchronous response delivery"
+    },
+    {
+      "name": "cost_budget",
+      "type": "integer",
+      "required": false,
+      "description": "Maximum credits to spend on ASP retries"
+    }
+  ]
+}

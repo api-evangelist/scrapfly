@@ -1,0 +1,161 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Scrapfly Scrape API"
+  description: >-
+    Shared capability definition for the Scrapfly Scrape API. Provides
+    web scraping with anti-bot bypass, proxy rotation, JavaScript rendering,
+    and AI-powered data extraction capabilities.
+  tags:
+    - Web Scraping
+    - Data Extraction
+    - Anti-Bot
+    - Proxies
+    - JavaScript Rendering
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SCRAPFLY_API_KEY: SCRAPFLY_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: scrapfly-scrape
+      baseUri: https://api.scrapfly.io
+      description: "Scrapfly Web Scraping API"
+      authentication:
+        type: apikey
+        key: key
+        value: "{{SCRAPFLY_API_KEY}}"
+        placement: query
+      resources:
+        - name: scraping
+          path: /scrape
+          description: Core web scraping endpoint
+          operations:
+            - name: scrape-url
+              method: GET
+              description: Scrape any URL with anti-bot bypass and optional JS rendering
+              inputParameters:
+                - name: url
+                  in: query
+                  type: string
+                  required: true
+                  description: Target URL to scrape
+                - name: render_js
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Enable JavaScript rendering
+                - name: asp
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Enable Anti Scraping Protection bypass
+                - name: country
+                  in: query
+                  type: string
+                  required: false
+                  description: Proxy country (ISO alpha-2)
+                - name: format
+                  in: query
+                  type: string
+                  required: false
+                  description: Output format (raw, clean_html, markdown, text)
+                - name: extraction_prompt
+                  in: query
+                  type: string
+                  required: false
+                  description: LLM prompt for structured data extraction
+                - name: session
+                  in: query
+                  type: string
+                  required: false
+                  description: Session name for persistent cookies
+                - name: cache
+                  in: query
+                  type: boolean
+                  required: false
+                  description: Enable response caching
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: screenshot
+          path: /screenshot
+          description: Screenshot capture endpoint
+          operations:
+            - name: capture-screenshot
+              method: GET
+              description: Capture a screenshot of a web page or element
+              inputParameters:
+                - name: url
+                  in: query
+                  type: string
+                  required: true
+                  description: Target URL to screenshot
+                - name: capture
+                  in: query
+                  type: string
+                  required: false
+                  description: Capture scope (fullpage or CSS selector)
+                - name: format
+                  in: query
+                  type: string
+                  required: false
+                  description: Image format (png, jpeg, webp)
+                - name: country
+                  in: query
+                  type: string
+                  required: false
+                  description: Proxy country for geo-specific capture
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: scrapfly-scrape-api
+      resources:
+        - path: /v1/scrape
+          name: scraping
+          description: Web scraping
+          operations:
+            - method: GET
+              name: scrape-url
+              description: Scrape a URL
+              call: "scrapfly-scrape.scrape-url"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: scrapfly-scrape-mcp
+      transport: http
+      tools:
+        - name: scrape-url
+          description: Scrape any URL with anti-bot bypass
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "scrapfly-scrape.scrape-url"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: capture-screenshot
+          description: Capture screenshot of a webpage
+          hints:
+            readOnly: true
+          call: "scrapfly-scrape.capture-screenshot"
+          outputParameters:
+            - type: object
+              mapping: "$."

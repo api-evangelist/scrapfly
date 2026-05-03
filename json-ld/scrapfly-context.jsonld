@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "scrapfly": "https://api-evangelist.github.io/scrapfly/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "ScrapeRequest": {
+      "@id": "scrapfly:ScrapeRequest",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A web scraping request submitted to the Scrapfly API"
+    },
+    "ScrapeResult": {
+      "@id": "scrapfly:ScrapeResult",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The result of a web scraping request"
+    },
+    "Screenshot": {
+      "@id": "scrapfly:Screenshot",
+      "@type": "schema:ImageObject",
+      "rdfs:comment": "A screenshot image captured from a web page"
+    },
+    "ExtractionResult": {
+      "@id": "scrapfly:ExtractionResult",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Structured data extracted from scraped content via template or LLM"
+    },
+
+    "url": {
+      "@id": "schema:url",
+      "@type": "xsd:anyURI"
+    },
+    "content": {
+      "@id": "schema:text",
+      "@type": "xsd:string"
+    },
+    "contentType": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "statusCode": {
+      "@id": "scrapfly:httpStatusCode",
+      "@type": "xsd:integer"
+    },
+    "renderJs": {
+      "@id": "scrapfly:renderJs",
+      "@type": "xsd:boolean"
+    },
+    "aspEnabled": {
+      "@id": "scrapfly:antiBotProtection",
+      "@type": "xsd:boolean"
+    },
+    "proxyCountry": {
+      "@id": "scrapfly:proxyCountry",
+      "@type": "xsd:string"
+    },
+    "apiCost": {
+      "@id": "scrapfly:creditCost",
+      "@type": "xsd:integer"
+    },
+    "remainingCredits": {
+      "@id": "scrapfly:remainingCredits",
+      "@type": "xsd:integer"
+    },
+    "sessionName": {
+      "@id": "scrapfly:sessionName",
+      "@type": "xsd:string"
+    },
+    "correlationId": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    }
+  }
+}

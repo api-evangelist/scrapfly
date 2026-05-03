@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/scrapfly/json-schema/scrapfly-scrape-response-schema.json",
+  "title": "Scrapfly Scrape Response",
+  "description": "Schema for the response returned by the Scrapfly Scrape API",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "description": "Scrape result data",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "Scraped page content in the requested format (HTML, markdown, text, or JSON)"
+        },
+        "content_type": {
+          "type": "string",
+          "description": "MIME type of the returned content",
+          "examples": ["text/html", "text/markdown", "application/json"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Final URL after any redirects were followed"
+        },
+        "status_code": {
+          "type": "integer",
+          "description": "HTTP status code of the scraped page",
+          "minimum": 100,
+          "maximum": 599
+        },
+        "cookies": {
+          "type": "array",
+          "description": "Cookies set by the scraped page",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Cookie name"
+              },
+              "value": {
+                "type": "string",
+                "description": "Cookie value"
+              },
+              "domain": {
+                "type": "string",
+                "description": "Cookie domain"
+              },
+              "path": {
+                "type": "string",
+                "description": "Cookie path"
+              },
+              "secure": {
+                "type": "boolean",
+                "description": "Whether cookie requires HTTPS"
+              },
+              "http_only": {
+                "type": "boolean",
+                "description": "Whether cookie is HTTP-only"
+              }
+            }
+          }
+        },
+        "request_headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP headers sent with the scrape request"
+        },
+        "response_headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP headers received in the scrape response"
+        },
+        "screenshots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Screenshot data keyed by selector name or 'main'"
+        },
+        "dns": {
+          "type": "object",
+          "description": "DNS information for the target domain",
+          "properties": {
+            "a_records": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "mx_records": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "ssl": {
+          "type": "object",
+          "description": "SSL/TLS certificate information",
+          "properties": {
+            "subject": { "type": "string" },
+            "issuer": { "type": "string" },
+            "valid_from": { "type": "string", "format": "date-time" },
+            "valid_to": { "type": "string", "format": "date-time" },
+            "protocol": { "type": "string" }
+          }
+        },
+        "extracted_data": {
+          "type": "object",
+          "description": "Structured data extracted via template or LLM prompt",
+          "additionalProperties": true
+        }
+      },
+      "required": ["content", "url", "status_code"]
+    },
+    "context": {
+      "type": "object",
+      "description": "Request context and billing metadata",
+      "properties": {
+        "api_cost": {
+          "type": "integer",
+          "description": "Number of credits consumed by this request"
+        },
+        "remaining_credits": {
+          "type": "integer",
+          "description": "Remaining API credits in the account"
+        },
+        "attempts": {
+          "type": "integer",
+          "description": "Number of retry attempts made",
+          "minimum": 1
+        },
+        "asp_enabled": {
+          "type": "boolean",
+          "description": "Whether Anti Scraping Protection was used"
+        },
+        "proxy_country": {
+          "type": "string",
+          "description": "Country of the proxy used for this request"
+        }
+      }
+    }
+  },
+  "required": ["result", "context"]
+}

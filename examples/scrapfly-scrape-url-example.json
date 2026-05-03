@@ -1,0 +1,53 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.scrapfly.io/scrape",
+    "parameters": {
+      "key": "scp-your-api-key-here",
+      "url": "https://example.com/product/12345",
+      "render_js": true,
+      "asp": true,
+      "country": "US",
+      "format": "markdown",
+      "extraction_prompt": "Extract the product name, price, description, and availability status",
+      "cache": true,
+      "cache_ttl": 3600,
+      "tags": ["product-scraping", "ecommerce"]
+    }
+  },
+  "response": {
+    "result": {
+      "content": "# Product Name\n\n**Price:** $49.99\n\n**Description:** High-quality product with excellent features...\n\n**Availability:** In Stock",
+      "content_type": "text/markdown",
+      "url": "https://example.com/product/12345",
+      "status_code": 200,
+      "cookies": [
+        {
+          "name": "session_id",
+          "value": "abc123xyz",
+          "domain": "example.com",
+          "path": "/",
+          "secure": true,
+          "http_only": true
+        }
+      ],
+      "response_headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-cache": "HIT"
+      },
+      "extracted_data": {
+        "product_name": "High-Quality Widget Pro",
+        "price": 49.99,
+        "description": "High-quality product with excellent features for professional use",
+        "availability": "In Stock"
+      }
+    },
+    "context": {
+      "api_cost": 5,
+      "remaining_credits": 9995,
+      "attempts": 1,
+      "asp_enabled": true,
+      "proxy_country": "US"
+    }
+  }
+}

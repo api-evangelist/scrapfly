@@ -1,0 +1,97 @@
+extends:
+  - spectral:oas
+
+rules:
+  scrapfly-api-key-query-param:
+    description: All operations must include the API key query parameter
+    message: "Scrapfly operations must include 'key' query parameter for authentication"
+    severity: error
+    given: "$.paths[*][get,post].parameters"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            type: object
+            properties:
+              name:
+                const: key
+              in:
+                const: query
+
+  scrapfly-url-param-required:
+    description: Scrape endpoints must include the 'url' parameter
+    message: "Scraping operations must require the 'url' query parameter"
+    severity: error
+    given: "$.paths['/scrape'][get,post].parameters"
+    then:
+      function: truthy
+
+  scrapfly-operation-ids:
+    description: All operations must have operationId
+    message: "Every operation must have a unique operationId"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  scrapfly-tags-required:
+    description: All operations must have at least one tag
+    message: "Operations must be tagged for categorization"
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  scrapfly-response-credit-headers:
+    description: Scrape responses should document credit consumption headers
+    message: "Scrape responses should document X-Scrapfly-Api-Cost and related headers"
+    severity: info
+    given: "$.paths['/scrape'].get.responses['200']"
+    then:
+      field: headers
+      function: truthy
+
+  scrapfly-boolean-default-values:
+    description: Boolean parameters should have explicit default values
+    message: "Boolean parameters like render_js and asp should have explicit default values"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.schema.type === 'boolean')]"
+    then:
+      field: schema.default
+      function: defined
+
+  scrapfly-error-responses:
+    description: Operations should document error responses
+    message: "Operations should document at least 401 and 429 error responses"
+    severity: warn
+    given: "$.paths[*][*].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - '401'
+
+  scrapfly-parameter-descriptions:
+    description: Parameters should have descriptions
+    message: "Parameter '{{value}}' should have a description"
+    severity: warn
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  scrapfly-camel-case-operation-ids:
+    description: Operation IDs should use camelCase
+    message: "OperationId '{{value}}' should use camelCase naming"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"

@@ -4,112 +4,78 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Scrapfly
 providerId: scrapfly
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - AI
-  - Data Extraction
-  - Screenshots
   - Web Scraping
-  - Proxies
-  - Browser Automation
+  - Data Extraction
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Scrapfly API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
+description: Scrapfly does not advertise per-second request limits. Throttling is enforced primarily through
+  account-level concurrency caps (set by subscription tier) and credit-pool exhaustion. Per-domain throttling
+  may also engage. The API surfaces concurrency and credit state in response headers, and returns 429
+  when concurrency, free quota, or domain throttling is hit.
+sources:
+  - https://scrapfly.io/pricing
+  - https://scrapfly.io/docs/scrape-api/getting-started
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  accountConcurrentUsage: X-Scrapfly-Account-Concurrent-Usage
+  accountRemainingConcurrentUsage: X-Scrapfly-Account-Remaining-Concurrent-Usage
+  projectConcurrentUsage: X-Scrapfly-Project-Concurrent-Usage
+  projectRemainingConcurrentUsage: X-Scrapfly-Project-Remaining-Concurrent-Usage
+  apiCost: X-Scrapfly-Api-Cost
+  remainingApiCredit: X-Scrapfly-Remaining-Api-Credit
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Scrapfly Scrape API
-      - Scrapfly Screenshot API
-      - Scrapfly Extraction API
-      - Scrapfly Crawler API
-      - Scrapfly Cloud Browser API
-      - Scrapfly SDKs
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Scrapfly Scrape API
-      - Scrapfly Screenshot API
-      - Scrapfly Extraction API
-      - Scrapfly Crawler API
-      - Scrapfly Cloud Browser API
-      - Scrapfly SDKs
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  - name: Free concurrency
+    scope: account
+    metric: concurrent_requests
+    limit: 5
+    notes: Applies to Free tier.
+  - name: Discovery concurrency
+    scope: account
+    metric: concurrent_requests
+    limit: 5
+    notes: Applies to Discovery ($30/mo) tier.
+  - name: Pro concurrency
+    scope: account
+    metric: concurrent_requests
+    limit: 20
+    notes: Applies to Pro ($100/mo) tier.
+  - name: Startup concurrency
+    scope: account
+    metric: concurrent_requests
+    limit: 50
+    notes: Applies to Startup ($250/mo) tier.
+  - name: Enterprise concurrency
+    scope: account
+    metric: concurrent_requests
     limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Scrapfly Scrape API
-      - Scrapfly Screenshot API
-      - Scrapfly Extraction API
-      - Scrapfly Crawler API
-      - Scrapfly Cloud Browser API
-      - Scrapfly SDKs
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Scrapfly Scrape API
-      - Scrapfly Screenshot API
-      - Scrapfly Extraction API
-      - Scrapfly Crawler API
-      - Scrapfly Cloud Browser API
-      - Scrapfly SDKs
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Scrapfly Scrape API
-      - Scrapfly Screenshot API
-      - Scrapfly Extraction API
-      - Scrapfly Crawler API
-      - Scrapfly Cloud Browser API
-      - Scrapfly SDKs
+    notes: Applies to Enterprise ($500/mo) tier.
+  - name: Custom concurrency
+    scope: account
+    metric: concurrent_requests
+    limit: negotiated
+    notes: Custom plans negotiate concurrency above 100.
+  - name: Per-domain throttling
+    scope: account/domain
+    metric: varies
+    limit: see Scrapfly throttling rules
+    notes: Scrapfly may throttle a specific destination domain to protect target sites; surfaced as 429.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Concurrency-based throttling
+    description: Subscription tier sets the maximum simultaneously open scrape requests. Excess requests
+      are rejected with 429 rather than queued.
+  - name: Credit pool overflow
+    description: Free and Discovery plans hard-cap at the monthly credit quota. Pro and higher plans auto-bill
+      overflow credits at tier-specific block rates ($1.20–$5.00 per 10,000 credits).
+  - name: Backoff
+    description: On 429 responses clients should back off and retry, monitoring X-Scrapfly-Account-Remaining-Concurrent-Usage
+      to gauge headroom.
+  - name: Project-scoped limits
+    description: Concurrency can be sub-divided across Scrapfly Projects; project-level usage is reported
+      via X-Scrapfly-Project-Concurrent-Usage.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

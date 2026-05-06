@@ -4,154 +4,287 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Scrapfly
 providerId: scrapfly
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - AI
+  - Web Scraping
   - Data Extraction
   - Screenshots
-  - Web Scraping
   - Proxies
   - Browser Automation
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Scrapfly prices on a credit-based subscription model. A single API key shares one credit
+  pool across all products (Scrape, Cloud Browser, Screenshot, Extraction, Crawler). Each plan bundles
+  monthly credits and a maximum concurrency level. Free and Discovery plans hard-cap at quota; Pro and
+  above auto-bill overage credits at tier-specific block rates.
+sources:
+  - https://scrapfly.io/pricing
 plans:
   - id: scrapfly-free
     name: Free
     type: freemium
-    description: Free entry tier for the Scrapfly API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free tier with 1,000 credits and 5 concurrent requests; hard-capped on quota exhaustion.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Monthly Credits
+        name: monthly_credits
         type: quota
-        metric: requests
+        metric: credits
         limit: 1000
         timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
+        price: '$0'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Scrapfly Scrape API
-      - name: Scrapfly Screenshot API
-      - name: Scrapfly Extraction API
-      - name: Scrapfly Crawler API
-      - name: Scrapfly Cloud Browser API
-      - name: Scrapfly SDKs
-  - id: scrapfly-pro
-    name: Professional
-    type: paid
-    description: Production tier for Scrapfly. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
+      - label: Concurrency
+        name: concurrency
         type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
+        metric: concurrent_requests
+        limit: 5
         geo: global
-        domains: []
         unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
+        price: included
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Scrapfly Scrape API
-      - name: Scrapfly Screenshot API
-      - name: Scrapfly Extraction API
-      - name: Scrapfly Crawler API
-      - name: Scrapfly Cloud Browser API
-      - name: Scrapfly SDKs
+      - name: Web Scraping API
+      - name: Cloud Browser API
+      - name: Screenshot API
+      - name: Extraction API
+      - name: Crawler API
+      - name: Hard cap on overflow
+  - id: scrapfly-discovery
+    name: Discovery
+    type: subscription
+    description: Entry paid plan at $30/month with 200,000 credits and 5 concurrency. Hard-capped on overflow;
+      extra credits available in $5/10,000-credit blocks.
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$30'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: monthly_credits
+        type: quota
+        metric: credits
+        limit: 200000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Concurrency
+        name: concurrency
+        type: quota
+        metric: concurrent_requests
+        limit: 5
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Extra Credits
+        name: extra_credits
+        type: metered
+        metric: credits
+        limit: -1
+        geo: global
+        unit: 10000
+        price: '$5.00'
+        userMultiplied: false
+    elements:
+      - name: All Scrapfly Products
+      - name: Hard cap on overflow
+  - id: scrapfly-pro
+    name: Pro
+    type: subscription
+    description: Pro plan at $100/month with 1,000,000 credits and 20 concurrency. Pay-as-you-go overflow
+      enabled at $3.50/10,000-credit blocks.
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$100'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: monthly_credits
+        type: quota
+        metric: credits
+        limit: 1000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Concurrency
+        name: concurrency
+        type: quota
+        metric: concurrent_requests
+        limit: 20
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Extra Credits
+        name: extra_credits
+        type: metered
+        metric: credits
+        limit: -1
+        geo: global
+        unit: 10000
+        price: '$3.50'
+        userMultiplied: false
+    elements:
+      - name: All Scrapfly Products
+      - name: Pay-as-you-go overflow
+  - id: scrapfly-startup
+    name: Startup
+    type: subscription
+    description: Startup plan at $250/month with 2,500,000 credits and 50 concurrency. Pay-as-you-go overflow
+      at $2.00/10,000-credit blocks.
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$250'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: monthly_credits
+        type: quota
+        metric: credits
+        limit: 2500000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Concurrency
+        name: concurrency
+        type: quota
+        metric: concurrent_requests
+        limit: 50
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Extra Credits
+        name: extra_credits
+        type: metered
+        metric: credits
+        limit: -1
+        geo: global
+        unit: 10000
+        price: '$2.00'
+        userMultiplied: false
+    elements:
+      - name: All Scrapfly Products
+      - name: Pay-as-you-go overflow
   - id: scrapfly-enterprise
     name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Scrapfly. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    type: subscription
+    description: Enterprise plan at $500/month with 5,500,000 credits and 100 concurrency. Pay-as-you-go
+      overflow at $1.20/10,000-credit blocks.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
+        price: '$500'
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
+      - label: Monthly Credits
+        name: monthly_credits
+        type: quota
+        metric: credits
+        limit: 5500000
+        timeFrame: month
+        geo: global
         unit: 1
-        price: custom
+        price: included
+        userMultiplied: false
+      - label: Concurrency
+        name: concurrency
+        type: quota
+        metric: concurrent_requests
+        limit: 100
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Extra Credits
+        name: extra_credits
+        type: metered
+        metric: credits
+        limit: -1
+        geo: global
+        unit: 10000
+        price: '$1.20'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Scrapfly Scrape API
-      - name: Scrapfly Screenshot API
-      - name: Scrapfly Extraction API
-      - name: Scrapfly Crawler API
-      - name: Scrapfly Cloud Browser API
-      - name: Scrapfly SDKs
+      - name: All Scrapfly Products
+      - name: Pay-as-you-go overflow
+  - id: scrapfly-custom
+    name: Custom
+    type: enterprise
+    description: Custom plans negotiated for high-volume customers, ranging $1,200–$30,000+/month with
+      negotiated credit pools, concurrency, and overflow rates.
+    entries:
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$1,200–$30,000+'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: monthly_credits
+        type: quota
+        metric: credits
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: negotiated
+        userMultiplied: false
+      - label: Concurrency
+        name: concurrency
+        type: quota
+        metric: concurrent_requests
+        limit: -1
+        geo: global
+        unit: 1
+        price: negotiated
+        userMultiplied: false
+      - label: Extra Credits
+        name: extra_credits
+        type: metered
+        metric: credits
+        limit: -1
+        geo: global
+        unit: 10000
+        price: negotiated
+        userMultiplied: false
+    elements:
+      - name: All Scrapfly Products
+      - name: Negotiated SLAs
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

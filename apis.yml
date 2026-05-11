@@ -130,6 +130,15 @@ apis:
         url: https://scrapfly.io/docs/sdk/python
       - type: GitHubOrg
         url: https://github.com/scrapfly
+common:
+  - type: Integrations
+    url: https://scrapfly.io/integration
+integrations:
+  - name: Zapier
+  - name: n8n
+  - name: LlamaIndex
+  - name: LangChain
+  - name: CrewAI
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

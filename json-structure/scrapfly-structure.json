@@ -1,0 +1,54 @@
+{
+  "provider": "Scrapfly",
+  "providerId": "scrapfly",
+  "kind": "json-structure",
+  "description": "Structural overview of the Scrapfly API surface; extracted from openapi/.",
+  "schemaCount": 2,
+  "operationCount": 3,
+  "schemas": [
+    {
+      "name": "ScrapeRequest",
+      "type": "object",
+      "propertyCount": 19,
+      "required": [
+        "key",
+        "url"
+      ]
+    },
+    {
+      "name": "ScrapeResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/scrape",
+      "operationId": "scrapeUrl",
+      "summary": "Scrape URL",
+      "tags": [
+        "Scraping"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/scrape",
+      "operationId": "scrapeUrlPost",
+      "summary": "Scrape URL (POST)",
+      "tags": [
+        "Scraping"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/screenshot",
+      "operationId": "captureScreenshot",
+      "summary": "Capture Screenshot",
+      "tags": [
+        "Screenshots"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScrapeRequest",
+  "title": "ScrapeRequest",
+  "type": "object",
+  "required": [
+    "key",
+    "url"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "API key for authentication"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Target URL to scrape"
+    },
+    "render_js": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable JavaScript rendering"
+    },
+    "asp": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable Anti Scraping Protection bypass"
+    },
+    "country": {
+      "type": "string",
+      "description": "Proxy country (ISO 3166-1 alpha-2)"
+    },
+    "proxy_pool": {
+      "type": "string",
+      "enum": [
+        "public_datacenter_pool",
+        "residential_pool"
+      ],
+      "description": "Proxy network selection"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "raw",
+        "clean_html",
+        "json",
+        "markdown",
+        "text"
+      ],
+      "default": "raw",
+      "description": "Response content format"
+    },
+    "headers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom HTTP headers"
+    },
+    "timeout": {
+      "type": "integer",
+      "default": 150000,
+      "description": "Request timeout in milliseconds"
+    },
+    "retry": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable automatic retry"
+    },
+    "session": {
+      "type": "string",
+      "description": "Session name for persistent cookies/fingerprint"
+    },
+    "cache": {
+      "type": "boolean",
+      "description": "Enable response caching"
+    },
+    "cache_ttl": {
+      "type": "integer",
+      "description": "Cache TTL in seconds"
+    },
+    "extraction_template": {
+      "type": "string",
+      "description": "Structured data extraction template"
+    },
+    "extraction_prompt": {
+      "type": "string",
+      "description": "LLM prompt for data extraction"
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Store results for debugging"
+    },
+    "correlation_id": {
+      "type": "string",
+      "description": "Group related scrapes"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorizing scrapes"
+    },
+    "webhook_name": {
+      "type": "string",
+      "description": "Webhook for async response delivery"
+    }
+  }
+}

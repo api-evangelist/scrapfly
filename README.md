@@ -49,20 +49,31 @@ Scrapfly is a web scraping API platform that enables effortless collection of we
 
 | File | Description |
 |------|-------------|
-| [capabilities/web-data-collection.yaml](capabilities/web-data-collection.yaml) | Web data collection workflow (scraping + screenshots + extraction) |
-| [capabilities/shared/scrapfly-scrape.yaml](capabilities/shared/scrapfly-scrape.yaml) | Shared Scrapfly scrape and screenshot API definition |
+| [capabilities/scrape-scraping.yaml](capabilities/scrape-scraping.yaml) | Naftiko capability for Scrapfly scrape operations (REST + MCP exposers) |
+| [capabilities/scrape-screenshots.yaml](capabilities/scrape-screenshots.yaml) | Naftiko capability for Scrapfly screenshot operations (REST + MCP exposers) |
+
+### Plans, Rate Limits & FinOps
+
+| File | Description |
+|------|-------------|
+| [plans/scrapfly-plans-pricing.yml](plans/scrapfly-plans-pricing.yml) | API Commons Plans 0.1 — Scrapfly tiers and pricing |
+| [rate-limits/scrapfly-rate-limits.yml](rate-limits/scrapfly-rate-limits.yml) | API Commons Rate Limits 0.1 — request-rate, concurrency, quotas |
+| [finops/scrapfly-finops.yml](finops/scrapfly-finops.yml) | FinOps Framework / FOCUS billing surface |
 
 ### JSON Schema
 
 | File | Description |
 |------|-------------|
-| [json-schema/scrapfly-scrape-response-schema.json](json-schema/scrapfly-scrape-response-schema.json) | Schema for scrape API response |
+| [json-schema/scrapfly-scraperequest-schema.json](json-schema/scrapfly-scraperequest-schema.json) | Schema for scrape API request |
+| [json-schema/scrapfly-scraperesponse-schema.json](json-schema/scrapfly-scraperesponse-schema.json) | Schema for scrape API response |
+| [json-schema/scrapfly-scrape-response-schema.json](json-schema/scrapfly-scrape-response-schema.json) | Legacy schema for scrape API response |
 
 ### JSON Structure
 
 | File | Description |
 |------|-------------|
 | [json-structure/scrapfly-scrape-request-structure.json](json-structure/scrapfly-scrape-request-structure.json) | Scrape request parameter structure documentation |
+| [json-structure/scrapfly-structure.json](json-structure/scrapfly-structure.json) | Overall Scrapfly API structure |
 
 ### JSON-LD
 

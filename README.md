@@ -1,10 +1,8 @@
-# Scrapfly
+# Scrapfly (scrapfly)
 
-Scrapfly is a web scraping API platform that enables effortless collection of web data with battle-tested APIs that scale. It provides capabilities for scraping web pages, capturing screenshots, and extracting structured data with AI assistance to handle anti-bot measures and JavaScript rendering. One API key unlocks five APIs: Web Scraping (anti-bot unblocker), Cloud Browser (CDP), Screenshot, Extraction, and Crawler. Global proxy mesh across 190+ countries.
+Scrapfly is a web scraping API platform that enables effortless collection of web data with battle-tested APIs that scale. It provides capabilities for scraping web pages, capturing screenshots, and extracting structured data with AI assistance to handle anti-bot measures and JavaScript rendering. One API key unlocks five APIs: Web Scraping (anti-bot unblocker), Cloud Browser (CDP), Screenshot, Extraction, and Crawler. Scrapfly operates globally with proxies across 190+ countries.
 
-**Human URL:** https://scrapfly.io/
-**Developer Documentation:** https://scrapfly.io/docs
-**APIs.yml:** https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/apis.yml
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -21,83 +19,136 @@ Scrapfly is a web scraping API platform that enables effortless collection of we
 - Proxies
 - Browser Automation
 
+## Timestamps
+
+- **Created:** 2025-02-08
+- **Modified:** 2026-05-19
+
 ## APIs
 
-| API | Description |
-|-----|-------------|
-| [Scrape API](https://scrapfly.io/docs/scrape-api) | Core web scraping with anti-bot bypass, proxy rotation, and JS rendering |
-| [Screenshot API](https://scrapfly.io/docs/screenshot-api/getting-started) | Full-page and element screenshot capture |
-| [Extraction API](https://scrapfly.io/docs/scrape-api/extraction) | AI-powered structured data extraction |
-| [Crawler API](https://scrapfly.io/docs) | Website crawling with WARC output (Early Access) |
-| [Cloud Browser API](https://scrapfly.io/docs) | Playwright/Puppeteer/Selenium cloud browser (Beta) |
+### Scrapfly Scrape API
 
-## Artifacts
+The core web scraping API that fetches any URL with anti-bot bypass, proxy rotation, and JavaScript rendering. Supports GET, POST, PUT, PATCH, HEAD, and OPTIONS methods. Returns clean HTML, markdown, JSON, or raw content. Features include session management, caching, custom headers, DNS customization, SSL info retrieval, webhooks, and structured data extraction with LLM assistance.
 
-### OpenAPI Specifications
+- **Human URL:** [https://scrapfly.io/docs/scrape-api/getting-started](https://scrapfly.io/docs/scrape-api/getting-started)
 
-| File | Description |
-|------|-------------|
-| [openapi/scrapfly-scrape-openapi.yml](openapi/scrapfly-scrape-openapi.yml) | Scrapfly Scrape and Screenshot API |
+#### Tags
 
-### Spectral Rules
+- Web Scraping
+- Anti-Bot
+- Proxies
+- JavaScript Rendering
 
-| File | Description |
-|------|-------------|
-| [rules/scrapfly-rules.yml](rules/scrapfly-rules.yml) | Scrapfly API conventions and linting ruleset |
+#### Properties
 
-### Capabilities
+- [Documentation](https://scrapfly.io/docs/scrape-api)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/openapi/scrapfly-scrape-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/rules/scrapfly-rules.yml)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/json-schema/scrapfly-scrape-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/json-ld/scrapfly-context.jsonld)
+- [Postman Collection](collections/scrapfly-scrape.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/scrapfly-scrape.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-| File | Description |
-|------|-------------|
-| [capabilities/scrape-scraping.yaml](capabilities/scrape-scraping.yaml) | Naftiko capability for Scrapfly scrape operations (REST + MCP exposers) |
-| [capabilities/scrape-screenshots.yaml](capabilities/scrape-screenshots.yaml) | Naftiko capability for Scrapfly screenshot operations (REST + MCP exposers) |
+### Scrapfly Screenshot API
 
-### Plans, Rate Limits & FinOps
+Capture screenshots of web pages with full-page or element-specific capture using CSS selectors. Supports JavaScript rendering, viewport configuration, and screenshot of dynamic content. The base URL for screenshots is https://api.scrapfly.io/screenshot.
 
-| File | Description |
-|------|-------------|
-| [plans/scrapfly-plans-pricing.yml](plans/scrapfly-plans-pricing.yml) | API Commons Plans 0.1 — Scrapfly tiers and pricing |
-| [rate-limits/scrapfly-rate-limits.yml](rate-limits/scrapfly-rate-limits.yml) | API Commons Rate Limits 0.1 — request-rate, concurrency, quotas |
-| [finops/scrapfly-finops.yml](finops/scrapfly-finops.yml) | FinOps Framework / FOCUS billing surface |
+- **Human URL:** [https://scrapfly.io/docs/screenshot-api/getting-started](https://scrapfly.io/docs/screenshot-api/getting-started)
 
-### JSON Schema
+#### Tags
 
-| File | Description |
-|------|-------------|
-| [json-schema/scrapfly-scraperequest-schema.json](json-schema/scrapfly-scraperequest-schema.json) | Schema for scrape API request |
-| [json-schema/scrapfly-scraperesponse-schema.json](json-schema/scrapfly-scraperesponse-schema.json) | Schema for scrape API response |
-| [json-schema/scrapfly-scrape-response-schema.json](json-schema/scrapfly-scrape-response-schema.json) | Legacy schema for scrape API response |
+- Screenshots
+- Web Scraping
+- Browser Automation
 
-### JSON Structure
+#### Properties
 
-| File | Description |
-|------|-------------|
-| [json-structure/scrapfly-scrape-request-structure.json](json-structure/scrapfly-scrape-request-structure.json) | Scrape request parameter structure documentation |
-| [json-structure/scrapfly-structure.json](json-structure/scrapfly-structure.json) | Overall Scrapfly API structure |
+- [Documentation](https://scrapfly.io/docs/screenshot-api/getting-started)
+- [Postman Collection](collections/scrapfly-scrape.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/scrapfly-scrape.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-### JSON-LD
+### Scrapfly Extraction API
 
-| File | Description |
-|------|-------------|
-| [json-ld/scrapfly-context.jsonld](json-ld/scrapfly-context.jsonld) | JSON-LD context for Scrapfly data vocabulary |
+AI-powered structured data extraction from HTML content. Supports template-based extraction, LLM prompt-driven extraction, and auto-extraction using predefined models for common content types.
 
-### Examples
+- **Human URL:** [https://scrapfly.io/docs/scrape-api/extraction](https://scrapfly.io/docs/scrape-api/extraction)
 
-| File | Description |
-|------|-------------|
-| [examples/scrapfly-scrape-url-example.json](examples/scrapfly-scrape-url-example.json) | Scrape URL with AI extraction example |
+#### Tags
 
-### Vocabulary
+- Data Extraction
+- AI
+- Structured Data
 
-| File | Description |
-|------|-------------|
-| [vocabulary/scrapfly-vocabulary.yml](vocabulary/scrapfly-vocabulary.yml) | Web scraping domain vocabulary and taxonomy |
+#### Properties
 
-## Links
+- [Documentation](https://scrapfly.io/docs/scrape-api/extraction)
+- [Postman Collection](collections/scrapfly-scrape.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/scrapfly-scrape.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-- **GitHub Org:** https://github.com/scrapfly
-- **OpenAPI Docs:** https://scrapfly.io/docs/openapi
-- **Python SDK:** https://scrapfly.io/docs/sdk/python
+### Scrapfly Crawler API
+
+Web crawling API (currently in early access) that enables crawling entire websites with advanced configuration for depth control and content filtering. Outputs in WARC format for comprehensive web archive support.
+
+- **Human URL:** [https://scrapfly.io/docs](https://scrapfly.io/docs)
+
+#### Tags
+
+- Web Crawling
+- Data Collection
+- WARC
+
+#### Properties
+
+- [Documentation](https://scrapfly.io/docs)
+- [Postman Collection](collections/scrapfly-scrape.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/scrapfly-scrape.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Scrapfly Cloud Browser API
+
+Headless browser automation API (currently in beta) compatible with Playwright, Puppeteer, and Selenium frameworks. Enables complex browser interactions, JavaScript execution, and file download capture.
+
+- **Human URL:** [https://scrapfly.io/docs](https://scrapfly.io/docs)
+
+#### Tags
+
+- Browser Automation
+- Playwright
+- Puppeteer
+- Selenium
+
+#### Properties
+
+- [Documentation](https://scrapfly.io/docs)
+- [Postman Collection](collections/scrapfly-scrape.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/scrapfly-scrape.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Scrapfly SDKs
+
+Official SDKs for Python, TypeScript, Go, Rust, and Scrapy with full feature coverage across every language including scrape, screenshot, extract, and crawl capabilities.
+
+- **Human URL:** [https://scrapfly.io/docs/sdk](https://scrapfly.io/docs/sdk)
+
+#### Tags
+
+- SDK
+- Python
+- TypeScript
+- Go
+- Rust
+
+#### Properties
+
+- [Documentation](https://scrapfly.io/docs/sdk)
+- [Python S D K](https://scrapfly.io/docs/sdk/python)
+- [Git Hub Org](https://github.com/scrapfly)
+- [Postman Collection](collections/scrapfly-scrape.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/scrapfly-scrape.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [LinkedIn](https://www.linkedin.com/company/scrapfly)
+- [Integrations](https://scrapfly.io/integration)
+- [L L Ms Txt](https://scrapfly.io/llms.txt)
 
 ## Maintainers
 

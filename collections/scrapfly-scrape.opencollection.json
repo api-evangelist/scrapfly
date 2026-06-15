@@ -1,0 +1,309 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scrapfly Scrape API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scraping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Scrape URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.scrapfly.io/scrape",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key for authentication"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Target URL to scrape (URL encoded)"
+              },
+              {
+                "name": "render_js",
+                "value": "",
+                "type": "query",
+                "description": "Enable JavaScript rendering via headless browser"
+              },
+              {
+                "name": "asp",
+                "value": "",
+                "type": "query",
+                "description": "Enable Anti Scraping Protection bypass"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Proxy geographic location using ISO 3166-1 alpha-2 country codes. Supports exclusions and weighted distribution."
+              },
+              {
+                "name": "proxy_pool",
+                "value": "",
+                "type": "query",
+                "description": "Select proxy network (datacenter or residential)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response content format"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Page language preference via Accept-Language header"
+              },
+              {
+                "name": "headers",
+                "value": "",
+                "type": "query",
+                "description": "Custom HTTP headers (URL encoded)"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Request timeout in milliseconds"
+              },
+              {
+                "name": "retry",
+                "value": "",
+                "type": "query",
+                "description": "Enable automatic retry on failures"
+              },
+              {
+                "name": "rendering_wait",
+                "value": "",
+                "type": "query",
+                "description": "Delay after page load in milliseconds (requires render_js=true)"
+              },
+              {
+                "name": "wait_for_selector",
+                "value": "",
+                "type": "query",
+                "description": "CSS/XPath selector or XHR pattern to wait for before capturing"
+              },
+              {
+                "name": "js",
+                "value": "",
+                "type": "query",
+                "description": "Custom JavaScript to execute (base64 encoded, max 16KB)"
+              },
+              {
+                "name": "screenshots",
+                "value": "",
+                "type": "query",
+                "description": "Capture page or element screenshots (CSS selectors, up to 10)"
+              },
+              {
+                "name": "js_scenario",
+                "value": "",
+                "type": "query",
+                "description": "Page interaction actions as JSON scenario (URL encoded)"
+              },
+              {
+                "name": "cache",
+                "value": "",
+                "type": "query",
+                "description": "Enable response caching"
+              },
+              {
+                "name": "cache_ttl",
+                "value": "",
+                "type": "query",
+                "description": "Cache time-to-live in seconds"
+              },
+              {
+                "name": "cache_clear",
+                "value": "",
+                "type": "query",
+                "description": "Force cache refresh"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "query",
+                "description": "Session name to persist cookies and browser fingerprint across requests"
+              },
+              {
+                "name": "session_sticky_proxy",
+                "value": "",
+                "type": "query",
+                "description": "Reuse the same proxy IP within a session"
+              },
+              {
+                "name": "extraction_template",
+                "value": "",
+                "type": "query",
+                "description": "Structured data extraction template name"
+              },
+              {
+                "name": "extraction_prompt",
+                "value": "",
+                "type": "query",
+                "description": "LLM instruction for data extraction"
+              },
+              {
+                "name": "extraction_model",
+                "value": "",
+                "type": "query",
+                "description": "AI auto-extraction model for predefined content types"
+              },
+              {
+                "name": "debug",
+                "value": "",
+                "type": "query",
+                "description": "Store results and screenshots for debugging"
+              },
+              {
+                "name": "correlation_id",
+                "value": "",
+                "type": "query",
+                "description": "Group related scrapes together"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated tags to categorize scrapes in dashboard"
+              },
+              {
+                "name": "dns",
+                "value": "",
+                "type": "query",
+                "description": "Query target DNS information"
+              },
+              {
+                "name": "ssl",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve SSL certificate and TLS information"
+              },
+              {
+                "name": "webhook_name",
+                "value": "",
+                "type": "query",
+                "description": "Webhook name to redirect response to"
+              },
+              {
+                "name": "cost_budget",
+                "value": "",
+                "type": "query",
+                "description": "Limit anti-scraping protection retry costs"
+              },
+              {
+                "name": "proxified_response",
+                "value": "",
+                "type": "query",
+                "description": "Return scraped content directly as response body instead of JSON wrapper"
+              }
+            ]
+          },
+          "docs": "Fetch and scrape any URL with anti-bot bypass, proxy rotation, and optional JavaScript rendering. Returns clean HTML, markdown, JSON, raw content, or plain text."
+        },
+        {
+          "info": {
+            "name": "Scrape URL (POST)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.scrapfly.io/scrape",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scrape a URL using a POST request with parameters in the request body. Useful for complex configurations or when URL length limits are a concern."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Screenshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capture Screenshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.scrapfly.io/screenshot",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key for authentication"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Target URL to screenshot (URL encoded)"
+              },
+              {
+                "name": "capture",
+                "value": "",
+                "type": "query",
+                "description": "What to capture: 'fullpage' for entire page, or a CSS selector for a specific element"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "Screen resolution (e.g., 1920x1080)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Image format"
+              },
+              {
+                "name": "rendering_wait",
+                "value": "",
+                "type": "query",
+                "description": "Delay in milliseconds after page load before capturing"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Proxy country for geo-specific screenshots"
+              }
+            ]
+          },
+          "docs": "Capture a screenshot of a web page. Supports full-page or element-specific screenshots using CSS selectors."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -125,7 +125,7 @@ common:
     url: https://www.linkedin.com/company/scrapfly
   - type: Integrations
     url: https://scrapfly.io/integration
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://scrapfly.io/llms.txt
 integrations:
   - name: Zapier

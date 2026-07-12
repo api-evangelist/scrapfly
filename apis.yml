@@ -121,12 +121,20 @@ apis:
       - type: GitHubOrg
         url: https://github.com/scrapfly
 common:
+  - type: TrustCenter
+    url: security/scrapfly-trust-center.yml
+  - type: DomainSecurity
+    url: security/scrapfly-domain-security.yml
+  - type: Authentication
+    url: authentication/scrapfly-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/scrapfly
   - type: Integrations
     url: https://scrapfly.io/integration
   - type: LlmsText
     url: https://scrapfly.io/llms.txt
+  - url: https://scrapfly.io/blog/rss/
+    type: Blog
 integrations:
   - name: Zapier
   - name: n8n

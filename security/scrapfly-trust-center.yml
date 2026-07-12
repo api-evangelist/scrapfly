@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://trust.inc/org_695c03cda42fc2450f034183
+url: https://trust.inc/org_695c03cda42fc2450f034183
+certifications:
+- SOC 2
+- ISO 27001
+- HIPAA
+- GDPR
+evidence:
+- source: https://trust.inc/org_695c03cda42fc2450f034183
+  keywords:
+  - soc 2
+  - soc2
+  - iso 27001
+  - hipaa
+  - trust center
+  - gdpr

@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/scrapfly-scrape-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: key
+  description: Scrapfly API key from your dashboard
+  sources:
+  - openapi/scrapfly-scrape-openapi.yml

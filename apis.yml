@@ -121,6 +121,8 @@ apis:
       - type: GitHubOrg
         url: https://github.com/scrapfly
 common:
+  - type: AgenticAccess
+    url: agentic-access/scrapfly-agentic-access.yml
   - type: TrustCenter
     url: security/scrapfly-trust-center.yml
   - type: DomainSecurity

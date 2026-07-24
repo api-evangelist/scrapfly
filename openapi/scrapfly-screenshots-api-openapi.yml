@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Scrapfly Scrape Scraping Screenshots API
+  description: The Scrapfly Scrape API enables web scraping at scale with anti-bot bypass, proxy rotation, JavaScript rendering, and AI-powered data extraction. One API key unlocks access to web scraping, screenshot capture, structured data extraction, web crawling, and cloud browser automation.
+  version: '1.0'
+  contact:
+    url: https://scrapfly.io/docs
+servers:
+- url: https://api.scrapfly.io
+  description: Scrapfly API
+security:
+- ApiKeyQuery: []
+tags:
+- name: Screenshots
+paths:
+  /screenshot:
+    get:
+      operationId: captureScreenshot
+      summary: Capture Screenshot
+      description: Capture a screenshot of a web page. Supports full-page or element-specific screenshots using CSS selectors.
+      tags:
+      - Screenshots
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: API key for authentication
+        schema:
+          type: string
+      - name: url
+        in: query
+        required: true
+        description: Target URL to screenshot (URL encoded)
+        schema:
+          type: string
+          format: uri
+      - name: capture
+        in: query
+        required: false
+        description: 'What to capture: ''fullpage'' for entire page, or a CSS selector for a specific element'
+        schema:
+          type: string
+          default: fullpage
+      - name: resolution
+        in: query
+        required: false
+        description: Screen resolution (e.g., 1920x1080)
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        description: Image format
+        schema:
+          type: string
+          enum:
+          - png
+          - jpeg
+          - webp
+          default: png
+      - name: rendering_wait
+        in: query
+        required: false
+        description: Delay in milliseconds after page load before capturing
+        schema:
+          type: integer
+      - name: country
+        in: query
+        required: false
+        description: Proxy country for geo-specific screenshots
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Screenshot captured successfully
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request
+        '401':
+          description: Invalid API key
+components:
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+      description: Scrapfly API key from your dashboard

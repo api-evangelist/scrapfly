@@ -1,0 +1,199 @@
+{
+  "$schema": "https://a2a-protocol.org/schemas/v0.3/agent-card.json",
+  "protocolVersion": "0.3",
+  "name": "scrapfly",
+  "description": "Scrapfly is a managed web scraping and browser automation platform. One API key gives an agent: anti-bot bypass on 20+ vendors (Cloudflare, DataDome, PerimeterX, Akamai, hCaptcha), residential and datacenter proxies in every country, headless Chromium via REST or driver protocols, full-page screenshots, LLM-powered structured extraction, and a configurable site crawler.",
+  "version": "1.0.0",
+  "url": "https://mcp.scrapfly.io",
+  "preferredTransport": "JSONRPC",
+  "documentationUrl": "https://scrapfly.io/docs",
+  "iconUrl": "https://scrapfly.io/img/logo.png",
+  "provider": {
+    "organization": "Scrapfly",
+    "url": "https://scrapfly.io",
+    "legalName": "Joam Intelligence LLC"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/markdown",
+    "text/html",
+    "image/png"
+  ],
+  "skills": [
+    {
+      "id": "scrape_url",
+      "name": "Scrape a URL",
+      "description": "Fetch a single URL through Scrapfly's managed proxy and anti-bot bypass infrastructure, returning the full HTML response or rendered DOM.",
+      "tags": [
+        "scraping",
+        "http",
+        "anti-bot",
+        "proxy"
+      ],
+      "examples": [
+        "Fetch the HTML of https://example.com",
+        "Scrape a Cloudflare-protected page using residential proxies in Germany",
+        "Get the rendered DOM of a JavaScript-heavy SPA"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/html",
+        "text/markdown",
+        "application/json"
+      ]
+    },
+    {
+      "id": "extract_data",
+      "name": "Extract structured data",
+      "description": "Extract typed structured data from a web page using a JSON schema or natural-language prompt; LLM-grounded with citations back to source HTML.",
+      "tags": [
+        "extraction",
+        "structured-data",
+        "llm",
+        "schema"
+      ],
+      "examples": [
+        "Extract product name, price, and availability from a product page",
+        "Pull the author, publish date, and body from an article",
+        "Get all reviews from a Yelp business page as JSON"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "take_screenshot",
+      "name": "Take a screenshot",
+      "description": "Capture a full-page, viewport, or element-level screenshot of a live URL.",
+      "tags": [
+        "screenshot",
+        "rendering",
+        "visual"
+      ],
+      "examples": [
+        "Take a full-page screenshot of https://example.com",
+        "Screenshot just the .product-card element",
+        "Render a page as PDF"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "image/png",
+        "image/jpeg",
+        "application/pdf"
+      ]
+    },
+    {
+      "id": "crawl_site",
+      "name": "Crawl a site",
+      "description": "Crawl an entire website with configurable budget, depth, URL patterns, and per-page scraping options. Results are streamed via webhook or pulled from a job queue.",
+      "tags": [
+        "crawler",
+        "site-traversal",
+        "bulk"
+      ],
+      "examples": [
+        "Crawl all product pages on https://shop.example.com up to 10,000 URLs",
+        "Crawl a site, scrape each page with anti-bot, deliver via webhook"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "browser_action",
+      "name": "Cloud Browser action",
+      "description": "Drive a remote Chromium session via Playwright, Puppeteer, Selenium, or raw CDP. Supports multi-step flows: login, click, type, evaluate JavaScript.",
+      "tags": [
+        "browser",
+        "automation",
+        "playwright",
+        "puppeteer",
+        "cdp"
+      ],
+      "examples": [
+        "Log into a site and download a CSV from the dashboard",
+        "Solve a multi-step search form and screenshot the results",
+        "Run a custom JavaScript scenario and return the page state"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json",
+        "image/png"
+      ]
+    }
+  ],
+  "securitySchemes": {
+    "oauth2": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://mcp.scrapfly.io/oauth/authorize",
+          "tokenUrl": "https://mcp.scrapfly.io/oauth/token",
+          "scopes": {
+            "scrape": "Issue scrape requests",
+            "browser": "Drive a Cloud Browser session",
+            "screenshot": "Take screenshots",
+            "extract": "Run structured-data extraction",
+            "crawler": "Manage and execute site crawls"
+          }
+        }
+      }
+    },
+    "apiKey": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "key",
+      "description": "Long-lived API key (scp-live-{32-hex}) issued from https://scrapfly.io/dashboard"
+    }
+  },
+  "security": [
+    {
+      "oauth2": [
+        "scrape",
+        "browser",
+        "screenshot",
+        "extract",
+        "crawler"
+      ]
+    },
+    {
+      "apiKey": []
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": false,
+  "additionalInterfaces": [
+    {
+      "url": "https://api.scrapfly.io",
+      "transport": "HTTP",
+      "description": "Direct REST API (Scrape, Screenshot, Extraction, Crawler) \u2014 language-agnostic, key-authenticated"
+    },
+    {
+      "url": "https://browser.scrapfly.io",
+      "transport": "WebSocket",
+      "description": "Cloud Browser CDP / Playwright / Puppeteer / Selenium connect URL"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "provider": "scrapfly",
+  "sources": [
+    "scrapfly-scraping-api-openapi.yml",
+    "scrapfly-screenshots-api-openapi.yml"
+  ],
+  "outputs": [
+    "scrapfly-scraping-api-openapi.yml",
+    "scrapfly-screenshots-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

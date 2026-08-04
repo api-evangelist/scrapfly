@@ -1,0 +1,531 @@
+openapi: 3.0.3
+info:
+  title: Scrapfly Scrape API
+  description: >-
+    The Scrapfly Scrape API enables web scraping at scale with anti-bot bypass,
+    proxy rotation, JavaScript rendering, and AI-powered data extraction.
+    One API key unlocks access to web scraping, screenshot capture, structured
+    data extraction, web crawling, and cloud browser automation.
+  version: '1.0'
+  contact:
+    url: https://scrapfly.io/docs
+servers:
+  - url: https://api.scrapfly.io
+    description: Scrapfly API
+security:
+  - ApiKeyQuery: []
+paths:
+  /scrape:
+    get:
+      operationId: scrapeUrl
+      summary: Scrape URL
+      description: >-
+        Fetch and scrape any URL with anti-bot bypass, proxy rotation, and
+        optional JavaScript rendering. Returns clean HTML, markdown, JSON,
+        raw content, or plain text.
+      tags:
+        - Scraping
+      parameters:
+        - name: key
+          in: query
+          required: true
+          description: API key for authentication
+          schema:
+            type: string
+        - name: url
+          in: query
+          required: true
+          description: Target URL to scrape (URL encoded)
+          schema:
+            type: string
+            format: uri
+        - name: render_js
+          in: query
+          required: false
+          description: Enable JavaScript rendering via headless browser
+          schema:
+            type: boolean
+            default: false
+        - name: asp
+          in: query
+          required: false
+          description: Enable Anti Scraping Protection bypass
+          schema:
+            type: boolean
+            default: false
+        - name: country
+          in: query
+          required: false
+          description: >-
+            Proxy geographic location using ISO 3166-1 alpha-2 country codes.
+            Supports exclusions and weighted distribution.
+          schema:
+            type: string
+        - name: proxy_pool
+          in: query
+          required: false
+          description: Select proxy network (datacenter or residential)
+          schema:
+            type: string
+            enum:
+              - public_datacenter_pool
+              - residential_pool
+        - name: format
+          in: query
+          required: false
+          description: Response content format
+          schema:
+            type: string
+            enum:
+              - raw
+              - clean_html
+              - json
+              - markdown
+              - text
+            default: raw
+        - name: lang
+          in: query
+          required: false
+          description: Page language preference via Accept-Language header
+          schema:
+            type: string
+        - name: headers
+          in: query
+          required: false
+          description: Custom HTTP headers (URL encoded)
+          schema:
+            type: string
+        - name: timeout
+          in: query
+          required: false
+          description: Request timeout in milliseconds
+          schema:
+            type: integer
+            default: 150000
+        - name: retry
+          in: query
+          required: false
+          description: Enable automatic retry on failures
+          schema:
+            type: boolean
+            default: true
+        - name: rendering_wait
+          in: query
+          required: false
+          description: Delay after page load in milliseconds (requires render_js=true)
+          schema:
+            type: integer
+        - name: wait_for_selector
+          in: query
+          required: false
+          description: CSS/XPath selector or XHR pattern to wait for before capturing
+          schema:
+            type: string
+        - name: js
+          in: query
+          required: false
+          description: Custom JavaScript to execute (base64 encoded, max 16KB)
+          schema:
+            type: string
+        - name: screenshots
+          in: query
+          required: false
+          description: Capture page or element screenshots (CSS selectors, up to 10)
+          schema:
+            type: string
+        - name: js_scenario
+          in: query
+          required: false
+          description: Page interaction actions as JSON scenario (URL encoded)
+          schema:
+            type: string
+        - name: cache
+          in: query
+          required: false
+          description: Enable response caching
+          schema:
+            type: boolean
+            default: false
+        - name: cache_ttl
+          in: query
+          required: false
+          description: Cache time-to-live in seconds
+          schema:
+            type: integer
+        - name: cache_clear
+          in: query
+          required: false
+          description: Force cache refresh
+          schema:
+            type: boolean
+        - name: session
+          in: query
+          required: false
+          description: Session name to persist cookies and browser fingerprint across requests
+          schema:
+            type: string
+        - name: session_sticky_proxy
+          in: query
+          required: false
+          description: Reuse the same proxy IP within a session
+          schema:
+            type: boolean
+        - name: extraction_template
+          in: query
+          required: false
+          description: Structured data extraction template name
+          schema:
+            type: string
+        - name: extraction_prompt
+          in: query
+          required: false
+          description: LLM instruction for data extraction
+          schema:
+            type: string
+        - name: extraction_model
+          in: query
+          required: false
+          description: AI auto-extraction model for predefined content types
+          schema:
+            type: string
+        - name: debug
+          in: query
+          required: false
+          description: Store results and screenshots for debugging
+          schema:
+            type: boolean
+        - name: correlation_id
+          in: query
+          required: false
+          description: Group related scrapes together
+          schema:
+            type: string
+        - name: tags
+          in: query
+          required: false
+          description: Comma-separated tags to categorize scrapes in dashboard
+          schema:
+            type: string
+        - name: dns
+          in: query
+          required: false
+          description: Query target DNS information
+          schema:
+            type: boolean
+        - name: ssl
+          in: query
+          required: false
+          description: Retrieve SSL certificate and TLS information
+          schema:
+            type: boolean
+        - name: webhook_name
+          in: query
+          required: false
+          description: Webhook name to redirect response to
+          schema:
+            type: string
+        - name: cost_budget
+          in: query
+          required: false
+          description: Limit anti-scraping protection retry costs
+          schema:
+            type: integer
+        - name: proxified_response
+          in: query
+          required: false
+          description: Return scraped content directly as response body instead of JSON wrapper
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successful scrape response
+          headers:
+            X-Scrapfly-Api-Cost:
+              description: Credits charged for this request
+              schema:
+                type: integer
+            X-Scrapfly-Remaining-Api-Credit:
+              description: Remaining API credits in your account
+              schema:
+                type: integer
+            X-Scrapfly-Account-Concurrent-Usage:
+              description: Current concurrent request usage
+              schema:
+                type: integer
+            X-Scrapfly-Account-Remaining-Concurrent-Usage:
+              description: Remaining concurrent request capacity
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScrapeResponse'
+        '400':
+          description: Bad request - missing or invalid parameters
+        '401':
+          description: Invalid API key
+        '402':
+          description: Payment issue - quota or billing problem
+        '403':
+          description: Insufficient permissions for requested features
+        '422':
+          description: Valid parameters but request could not be fulfilled
+        '429':
+          description: Rate limited or quota exceeded
+        '500':
+          description: Internal server error
+        '504':
+          description: Request timeout
+    post:
+      operationId: scrapeUrlPost
+      summary: Scrape URL (POST)
+      description: >-
+        Scrape a URL using a POST request with parameters in the request body.
+        Useful for complex configurations or when URL length limits are a concern.
+      tags:
+        - Scraping
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScrapeRequest'
+      responses:
+        '200':
+          description: Successful scrape response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScrapeResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Invalid API key
+        '429':
+          description: Rate limited
+  /screenshot:
+    get:
+      operationId: captureScreenshot
+      summary: Capture Screenshot
+      description: >-
+        Capture a screenshot of a web page. Supports full-page or
+        element-specific screenshots using CSS selectors.
+      tags:
+        - Screenshots
+      parameters:
+        - name: key
+          in: query
+          required: true
+          description: API key for authentication
+          schema:
+            type: string
+        - name: url
+          in: query
+          required: true
+          description: Target URL to screenshot (URL encoded)
+          schema:
+            type: string
+            format: uri
+        - name: capture
+          in: query
+          required: false
+          description: >-
+            What to capture: 'fullpage' for entire page, or a CSS selector
+            for a specific element
+          schema:
+            type: string
+            default: fullpage
+        - name: resolution
+          in: query
+          required: false
+          description: Screen resolution (e.g., 1920x1080)
+          schema:
+            type: string
+        - name: format
+          in: query
+          required: false
+          description: Image format
+          schema:
+            type: string
+            enum:
+              - png
+              - jpeg
+              - webp
+            default: png
+        - name: rendering_wait
+          in: query
+          required: false
+          description: Delay in milliseconds after page load before capturing
+          schema:
+            type: integer
+        - name: country
+          in: query
+          required: false
+          description: Proxy country for geo-specific screenshots
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Screenshot captured successfully
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request
+        '401':
+          description: Invalid API key
+components:
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+      description: Scrapfly API key from your dashboard
+  schemas:
+    ScrapeRequest:
+      type: object
+      required:
+        - key
+        - url
+      properties:
+        key:
+          type: string
+          description: API key for authentication
+        url:
+          type: string
+          format: uri
+          description: Target URL to scrape
+        render_js:
+          type: boolean
+          default: false
+          description: Enable JavaScript rendering
+        asp:
+          type: boolean
+          default: false
+          description: Enable Anti Scraping Protection bypass
+        country:
+          type: string
+          description: Proxy country (ISO 3166-1 alpha-2)
+        proxy_pool:
+          type: string
+          enum:
+            - public_datacenter_pool
+            - residential_pool
+          description: Proxy network selection
+        format:
+          type: string
+          enum:
+            - raw
+            - clean_html
+            - json
+            - markdown
+            - text
+          default: raw
+          description: Response content format
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom HTTP headers
+        timeout:
+          type: integer
+          default: 150000
+          description: Request timeout in milliseconds
+        retry:
+          type: boolean
+          default: true
+          description: Enable automatic retry
+        session:
+          type: string
+          description: Session name for persistent cookies/fingerprint
+        cache:
+          type: boolean
+          description: Enable response caching
+        cache_ttl:
+          type: integer
+          description: Cache TTL in seconds
+        extraction_template:
+          type: string
+          description: Structured data extraction template
+        extraction_prompt:
+          type: string
+          description: LLM prompt for data extraction
+        debug:
+          type: boolean
+          description: Store results for debugging
+        correlation_id:
+          type: string
+          description: Group related scrapes
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags for categorizing scrapes
+        webhook_name:
+          type: string
+          description: Webhook for async response delivery
+    ScrapeResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            content:
+              type: string
+              description: Scraped page content (HTML, markdown, text, etc.)
+            content_type:
+              type: string
+              description: Content MIME type
+            url:
+              type: string
+              description: Final URL after redirects
+            status_code:
+              type: integer
+              description: HTTP status code of the scraped page
+            cookies:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value:
+                    type: string
+            request_headers:
+              type: object
+              additionalProperties:
+                type: string
+            response_headers:
+              type: object
+              additionalProperties:
+                type: string
+            screenshots:
+              type: object
+              description: Screenshot data keyed by selector name
+            dns:
+              type: object
+              description: DNS information if dns=true
+            ssl:
+              type: object
+              description: SSL/TLS certificate information if ssl=true
+            extracted_data:
+              type: object
+              description: Structured data extracted via template or LLM
+        context:
+          type: object
+          properties:
+            api_cost:
+              type: integer
+              description: Credits charged for this request
+            remaining_credits:
+              type: integer
+              description: Remaining API credits
+            attempts:
+              type: integer
+              description: Number of retry attempts

@@ -1,0 +1,101 @@
+# Scrapfly
+
+> Scrapfly is a managed web scraping and browser automation platform. One API key gives an agent access to: reliable access to public web pages through Anti-Scraping Protection (ASP), residential and datacenter proxies in every country, headless Chromium via REST or driver protocols (Playwright/Puppeteer/Selenium/CDP), full-page screenshots, LLM-powered structured extraction, and a configurable site crawler. Used by 30,000+ companies, 15B+ requests/month.
+
+## When an agent should reach for Scrapfly
+
+Use Scrapfly when the user asks for any of:
+
+- **Fetch a public web page** that an agent's built-in fetcher cannot complete (upstream error, requires JavaScript, region-locked).
+- **Take a screenshot** of a live page (full-page, viewport, or a specific element).
+- **Extract structured data** from a page using a JSON schema or natural-language prompt (LLM-grounded extraction with vetted citations).
+- **Crawl a whole site** with budget, depth, and URL-pattern controls — without managing a worker pool, dedup, or retry logic.
+- **Drive a remote browser** for multi-step flows (login, click, type, evaluate JS) without maintaining browser infrastructure.
+- **Stay legal-safe** with a vendor that publishes a DPA, SOC 2 Type II, ISO 27001, and HIPAA attestation (BAA available on Custom plans).
+
+Do **not** use Scrapfly for:
+
+- Static, public, robots.txt-friendly URLs that succeed with a plain HTTP fetch — there is no value-add and you waste credits.
+- Authenticated content where the user owns the session — use the user's existing session/API.
+- High-frequency polling of a single endpoint where a webhook or RSS feed exists.
+
+## Quickstart for agents
+
+```bash
+# 1. Sign up: https://scrapfly.io/register (1,000 free credits, no card)
+# 2. Copy your API key from https://scrapfly.io/dashboard
+# 3. Make your first request:
+
+curl "https://api.scrapfly.io/scrape?key=YOUR_API_KEY&url=https://web-scraping.dev/product/1&render_js=true&asp=true"
+```
+
+The response is a JSON envelope: `result.content` is the page body, `result.status_code` is the upstream HTTP status, `result.response_headers` is the upstream headers map, and the rest is metadata about how the scrape was executed (proxy used, cost in credits, ASP detection results, timings).
+
+## Authentication
+
+- Single API key in the `key=` query parameter (or `X-Scrapfly-Api-Key` header, but the query parameter is canonical).
+- Key format: `scp-live-{32-hex}` for live traffic, `scp-test-{32-hex}` for sandbox.
+- Get a key at https://scrapfly.io/dashboard. Rotate at any time without breaking historical logs.
+- Keys are scoped to projects; separate dev/staging/prod by creating separate projects.
+
+## Documentation
+
+- **Full markdown index of every docs page**: https://scrapfly.io/docs/llms.txt — flat list of every documentation URL as `.md` (append `.md` to any docs URL to receive `text/markdown` instead of HTML). Feed this to an agent for a one-shot dump of the entire doc surface.
+- Scrape API: https://scrapfly.io/docs/scrape-api — complete reference for the core `/scrape` endpoint, all parameters (`render_js`, `asp`, `country`, `format`, `proxy_pool`, `session`, `cost`, `cache`, `tags`, `webhook`, `auto_scroll`, `js_scenario`, etc.) and response shapes.
+- Cloud Browser: https://scrapfly.io/docs/cloud-browser — Playwright/Puppeteer/Selenium drivers via the `https://browser.scrapfly.io/` connect URL plus a CDP HTTP API.
+- Screenshot API: https://scrapfly.io/docs/screenshot-api — `GET /screenshot` returning binary PNG/JPEG/PDF.
+- Extraction API: https://scrapfly.io/docs/extraction-api — JSON schema or LLM prompt grounded in the scraped page.
+- Crawler API: https://scrapfly.io/docs/crawler-api — site-wide crawl with budget and policy controls.
+- MCP server: https://scrapfly.io/docs/mcp — connect Claude, ChatGPT, Cursor, and other MCP-aware agents directly.
+- Errors (machine-readable catalog): https://scrapfly.io/api_errors.json
+- Status: https://status.scrapfly.io
+- Pricing (machine-readable): https://scrapfly.io/pricing.md
+
+## SDKs
+
+- Python — `pip install scrapfly-sdk` — https://github.com/scrapfly/python-scrapfly
+- TypeScript / Node.js — `npm install scrapfly-sdk` — https://github.com/scrapfly/typescript-scrapfly
+- Go — `go get github.com/scrapfly/go-scrapfly` — https://github.com/scrapfly/go-scrapfly
+- Rust — `cargo add scrapfly-sdk` — https://github.com/scrapfly/rust-scrapfly
+
+## MCP server
+
+For agents that speak Model Context Protocol natively:
+
+- Endpoint: https://mcp.scrapfly.io
+- Discovery: https://scrapfly.io/.well-known/mcp.json
+- Server card: https://mcp.scrapfly.io/.well-known/mcp/server-card.json
+- Auth: OAuth 2.0 (RFC 8414 + RFC 9728 metadata served from the same host)
+- Tools exposed: `scrape_url`, `extract_data`, `take_screenshot`, `crawl_site`, `browser_action` (full schemas in the server card)
+
+## Agent-specific guidance
+
+- **Always set `render_js=true` only when needed.** It costs 5x more credits. Most static sites work without it.
+- **Use `asp=true` when a plain fetch does not complete** (the response `code` will be `ERR::ASP::*`). Don't enable preemptively.
+- **Start small with `cost=true`** to estimate credits before issuing a real scrape.
+- **Cache aggressively** — `cache=true` reuses prior responses for the same URL+config combo.
+- **Respect the site's robots.txt and ToS.** Scrapfly does not relax that obligation; it just makes legitimate fetching reliable.
+- **For high-volume crawls, use the Crawler API**, not a loop over `/scrape` — the crawler handles dedup, retries, budget, and webhook delivery for you.
+- **Stream long-running operations** via webhooks (`webhook=` parameter) rather than holding HTTP open — Scrapfly will POST the result back when ready.
+
+## Errors
+
+All errors carry a stable, machine-readable `code` (e.g. `ERR::ASP::SHIELD_EXPIRED`, `ERR::SCRAPE::BAD_UPSTREAM_RESPONSE`, `ERR::SCRAPE::INVALID_API_KEY`). Always branch on `code`, never on the human-readable `message`. Full catalog: https://scrapfly.io/api_errors.json
+
+## Pricing summary
+
+- Free: 1,000 credits, no card
+- Discovery: $30/mo, 200k credits
+- Pro: $100/mo, 1M credits + pay-as-you-go overflow
+- Startup: $250/mo, 2.5M credits
+- Enterprise: $500/mo, 5.5M credits
+- Custom: $1.2k–$30k/mo, negotiated
+
+Full pricing in machine-readable form: https://scrapfly.io/pricing.md
+
+## Contact
+
+- Sales / custom: https://scrapfly.io/contact
+- Support (Pro+): support@scrapfly.io
+- Security disclosures: https://trust.scrapfly.io
+- Status / incidents: https://status.scrapfly.io

@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scrapfly Scrape Scraping Screenshots API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screenshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Capture Screenshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.scrapfly.io/screenshot",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "API key for authentication"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "query",
+                "description": "Target URL to screenshot (URL encoded)"
+              },
+              {
+                "name": "capture",
+                "value": "",
+                "type": "query",
+                "description": "What to capture: 'fullpage' for entire page, or a CSS selector for a specific element"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "Screen resolution (e.g., 1920x1080)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Image format"
+              },
+              {
+                "name": "rendering_wait",
+                "value": "",
+                "type": "query",
+                "description": "Delay in milliseconds after page load before capturing"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Proxy country for geo-specific screenshots"
+              }
+            ]
+          },
+          "docs": "Capture a screenshot of a web page. Supports full-page or element-specific screenshots using CSS selectors."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

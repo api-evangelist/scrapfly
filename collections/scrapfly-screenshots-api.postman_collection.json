@@ -1,0 +1,319 @@
+{
+  "item": [
+    {
+      "id": "874cfce0-c694-4244-93a1-796e015df8de",
+      "name": "Screenshots",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5eca4f85-8513-49c7-a274-dc016e896f5f",
+          "name": "Capture Screenshot",
+          "request": {
+            "name": "Capture Screenshot",
+            "description": {
+              "content": "Capture a screenshot of a web page. Supports full-page or element-specific screenshots using CSS selectors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screenshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key for authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<uri>",
+                  "description": "(Required) Target URL to screenshot (URL encoded)"
+                },
+                {
+                  "disabled": false,
+                  "key": "capture",
+                  "value": "fullpage",
+                  "description": "What to capture: 'fullpage' for entire page, or a CSS selector for a specific element"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "<string>",
+                  "description": "Screen resolution (e.g., 1920x1080)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "png",
+                  "description": "Image format"
+                },
+                {
+                  "disabled": false,
+                  "key": "rendering_wait",
+                  "value": "<integer>",
+                  "description": "Delay in milliseconds after page load before capturing"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Proxy country for geo-specific screenshots"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee45b758-72be-4d0d-bf05-c381c0d41c39",
+              "name": "Screenshot captured successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screenshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "capture",
+                      "value": "fullpage"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06ac4265-f27f-4288-9284-6bb82e21abfe",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screenshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "capture",
+                      "value": "fullpage"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e3587d5-04ec-41f3-b982-f808d329b729",
+              "name": "Invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screenshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "capture",
+                      "value": "fullpage"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "png"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.scrapfly.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c0b74b3c-84b1-48fb-a113-1be6a96ad908",
+    "name": "Scrapfly Scrape Scraping Screenshots API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Scrapfly Scrape API enables web scraping at scale with anti-bot bypass, proxy rotation, JavaScript rendering, and AI-powered data extraction. One API key unlocks access to web scraping, screenshot capture, structured data extraction, web crawling, and cloud browser automation.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1987 @@
+{
+  "item": [
+    {
+      "id": "3c64d3b0-f5bc-4b38-9ef1-e69a592c188e",
+      "name": "Scraping",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "589b979f-0226-4546-b334-f40b19c9220f",
+          "name": "Scrape URL",
+          "request": {
+            "name": "Scrape URL",
+            "description": {
+              "content": "Fetch and scrape any URL with anti-bot bypass, proxy rotation, and optional JavaScript rendering. Returns clean HTML, markdown, JSON, raw content, or plain text.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scrape"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) API key for authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<uri>",
+                  "description": "(Required) Target URL to scrape (URL encoded)"
+                },
+                {
+                  "disabled": false,
+                  "key": "render_js",
+                  "value": "false",
+                  "description": "Enable JavaScript rendering via headless browser"
+                },
+                {
+                  "disabled": false,
+                  "key": "asp",
+                  "value": "false",
+                  "description": "Enable Anti Scraping Protection bypass"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Proxy geographic location using ISO 3166-1 alpha-2 country codes. Supports exclusions and weighted distribution."
+                },
+                {
+                  "disabled": false,
+                  "key": "proxy_pool",
+                  "value": "<string>",
+                  "description": "Select proxy network (datacenter or residential)"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "raw",
+                  "description": "Response content format"
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Page language preference via Accept-Language header"
+                },
+                {
+                  "disabled": false,
+                  "key": "headers",
+                  "value": "<string>",
+                  "description": "Custom HTTP headers (URL encoded)"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "150000",
+                  "description": "Request timeout in milliseconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "retry",
+                  "value": "true",
+                  "description": "Enable automatic retry on failures"
+                },
+                {
+                  "disabled": false,
+                  "key": "rendering_wait",
+                  "value": "<integer>",
+                  "description": "Delay after page load in milliseconds (requires render_js=true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "wait_for_selector",
+                  "value": "<string>",
+                  "description": "CSS/XPath selector or XHR pattern to wait for before capturing"
+                },
+                {
+                  "disabled": false,
+                  "key": "js",
+                  "value": "<string>",
+                  "description": "Custom JavaScript to execute (base64 encoded, max 16KB)"
+                },
+                {
+                  "disabled": false,
+                  "key": "screenshots",
+                  "value": "<string>",
+                  "description": "Capture page or element screenshots (CSS selectors, up to 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "js_scenario",
+                  "value": "<string>",
+                  "description": "Page interaction actions as JSON scenario (URL encoded)"
+                },
+                {
+                  "disabled": false,
+                  "key": "cache",
+                  "value": "false",
+                  "description": "Enable response caching"
+                },
+                {
+                  "disabled": false,
+                  "key": "cache_ttl",
+                  "value": "<integer>",
+                  "description": "Cache time-to-live in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "cache_clear",
+                  "value": "<boolean>",
+                  "description": "Force cache refresh"
+                },
+                {
+                  "disabled": false,
+                  "key": "session",
+                  "value": "<string>",
+                  "description": "Session name to persist cookies and browser fingerprint across requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "session_sticky_proxy",
+                  "value": "<boolean>",
+                  "description": "Reuse the same proxy IP within a session"
+                },
+                {
+                  "disabled": false,
+                  "key": "extraction_template",
+                  "value": "<string>",
+                  "description": "Structured data extraction template name"
+                },
+                {
+                  "disabled": false,
+                  "key": "extraction_prompt",
+                  "value": "<string>",
+                  "description": "LLM instruction for data extraction"
+                },
+                {
+                  "disabled": false,
+                  "key": "extraction_model",
+                  "value": "<string>",
+                  "description": "AI auto-extraction model for predefined content types"
+                },
+                {
+                  "disabled": false,
+                  "key": "debug",
+                  "value": "<boolean>",
+                  "description": "Store results and screenshots for debugging"
+                },
+                {
+                  "disabled": false,
+                  "key": "correlation_id",
+                  "value": "<string>",
+                  "description": "Group related scrapes together"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Comma-separated tags to categorize scrapes in dashboard"
+                },
+                {
+                  "disabled": false,
+                  "key": "dns",
+                  "value": "<boolean>",
+                  "description": "Query target DNS information"
+                },
+                {
+                  "disabled": false,
+                  "key": "ssl",
+                  "value": "<boolean>",
+                  "description": "Retrieve SSL certificate and TLS information"
+                },
+                {
+                  "disabled": false,
+                  "key": "webhook_name",
+                  "value": "<string>",
+                  "description": "Webhook name to redirect response to"
+                },
+                {
+                  "disabled": false,
+                  "key": "cost_budget",
+                  "value": "<integer>",
+                  "description": "Limit anti-scraping protection retry costs"
+                },
+                {
+                  "disabled": false,
+                  "key": "proxified_response",
+                  "value": "<boolean>",
+                  "description": "Return scraped content directly as response body instead of JSON wrapper"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2d3ef3b-dcbd-440a-9080-9e653e61dd1e",
+              "name": "Successful scrape response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Credits charged for this request",
+                  "key": "X-Scrapfly-Api-Cost",
+                  "value": "658"
+                },
+                {
+                  "disabled": false,
+                  "description": "Remaining API credits in your account",
+                  "key": "X-Scrapfly-Remaining-Api-Credit",
+                  "value": "658"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current concurrent request usage",
+                  "key": "X-Scrapfly-Account-Concurrent-Usage",
+                  "value": "658"
+                },
+                {
+                  "disabled": false,
+                  "description": "Remaining concurrent request capacity",
+                  "key": "X-Scrapfly-Account-Remaining-Concurrent-Usage",
+                  "value": "658"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"content\": \"string\",\n    \"content_type\": \"string\",\n    \"url\": \"string\",\n    \"status_code\": 3570,\n    \"cookies\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"request_headers\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"response_headers\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"screenshots\": {},\n    \"dns\": {},\n    \"ssl\": {},\n    \"extracted_data\": {}\n  },\n  \"context\": {\n    \"api_cost\": 4930,\n    \"remaining_credits\": 2215,\n    \"attempts\": 8549\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b12bf3e-c319-4731-ac5b-e3ff88b865ff",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aac3dc9d-a159-4169-9a41-baa370b75e10",
+              "name": "Invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00b0c4bc-3ff7-4ca1-bbfd-71b08ba5d638",
+              "name": "Payment issue - quota or billing problem",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b46bb15d-f37b-4228-8fee-15012bfdd84f",
+              "name": "Insufficient permissions for requested features",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96dd5515-01df-42e1-b389-baed661a8558",
+              "name": "Valid parameters but request could not be fulfilled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7a9f622-1cf9-47e1-85dd-59f359efe42a",
+              "name": "Rate limited or quota exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "713793d5-981b-49a8-8f8d-ee282ebbbc1e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f8e6bc9-c07a-4718-9884-a0447df016ba",
+              "name": "Request timeout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "render_js",
+                      "value": "false"
+                    },
+                    {
+                      "key": "asp",
+                      "value": "false"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proxy_pool",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "150000"
+                    },
+                    {
+                      "key": "retry",
+                      "value": "true"
+                    },
+                    {
+                      "key": "rendering_wait",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "wait_for_selector",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "screenshots",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "js_scenario",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cache",
+                      "value": "false"
+                    },
+                    {
+                      "key": "cache_ttl",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cache_clear",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "session",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "session_sticky_proxy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "extraction_template",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_prompt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "extraction_model",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "correlation_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dns",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ssl",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "webhook_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cost_budget",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "proxified_response",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa842eb4-b229-449a-ab66-2a78aab8cbdc",
+          "name": "Scrape URL (POST)",
+          "request": {
+            "name": "Scrape URL (POST)",
+            "description": {
+              "content": "Scrape a URL using a POST request with parameters in the request body. Useful for complex configurations or when URL length limits are a concern.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scrape"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"render_js\": false,\n  \"asp\": false,\n  \"country\": \"<string>\",\n  \"proxy_pool\": \"<string>\",\n  \"format\": \"raw\",\n  \"headers\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"timeout\": 150000,\n  \"retry\": true,\n  \"session\": \"<string>\",\n  \"cache\": \"<boolean>\",\n  \"cache_ttl\": \"<integer>\",\n  \"extraction_template\": \"<string>\",\n  \"extraction_prompt\": \"<string>\",\n  \"debug\": \"<boolean>\",\n  \"correlation_id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"webhook_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "514841f9-d3de-44e6-a79b-02d1442a1346",
+              "name": "Successful scrape response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"render_js\": false,\n  \"asp\": false,\n  \"country\": \"<string>\",\n  \"proxy_pool\": \"<string>\",\n  \"format\": \"raw\",\n  \"headers\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"timeout\": 150000,\n  \"retry\": true,\n  \"session\": \"<string>\",\n  \"cache\": \"<boolean>\",\n  \"cache_ttl\": \"<integer>\",\n  \"extraction_template\": \"<string>\",\n  \"extraction_prompt\": \"<string>\",\n  \"debug\": \"<boolean>\",\n  \"correlation_id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"webhook_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": {\n    \"content\": \"string\",\n    \"content_type\": \"string\",\n    \"url\": \"string\",\n    \"status_code\": 8296,\n    \"cookies\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"request_headers\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"response_headers\": {\n      \"key_0\": \"string\"\n    },\n    \"screenshots\": {},\n    \"dns\": {},\n    \"ssl\": {},\n    \"extracted_data\": {}\n  },\n  \"context\": {\n    \"api_cost\": 1691,\n    \"remaining_credits\": 7332,\n    \"attempts\": 4579\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "808febed-5387-4425-b525-37ee34085a19",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"render_js\": false,\n  \"asp\": false,\n  \"country\": \"<string>\",\n  \"proxy_pool\": \"<string>\",\n  \"format\": \"raw\",\n  \"headers\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"timeout\": 150000,\n  \"retry\": true,\n  \"session\": \"<string>\",\n  \"cache\": \"<boolean>\",\n  \"cache_ttl\": \"<integer>\",\n  \"extraction_template\": \"<string>\",\n  \"extraction_prompt\": \"<string>\",\n  \"debug\": \"<boolean>\",\n  \"correlation_id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"webhook_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e9da186-ab76-499c-9af3-ab1dbddfb0b3",
+              "name": "Invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"render_js\": false,\n  \"asp\": false,\n  \"country\": \"<string>\",\n  \"proxy_pool\": \"<string>\",\n  \"format\": \"raw\",\n  \"headers\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"timeout\": 150000,\n  \"retry\": true,\n  \"session\": \"<string>\",\n  \"cache\": \"<boolean>\",\n  \"cache_ttl\": \"<integer>\",\n  \"extraction_template\": \"<string>\",\n  \"extraction_prompt\": \"<string>\",\n  \"debug\": \"<boolean>\",\n  \"correlation_id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"webhook_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67966668-d36d-487f-be3b-5c4fa0c3822f",
+              "name": "Rate limited",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrape"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"render_js\": false,\n  \"asp\": false,\n  \"country\": \"<string>\",\n  \"proxy_pool\": \"<string>\",\n  \"format\": \"raw\",\n  \"headers\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"timeout\": 150000,\n  \"retry\": true,\n  \"session\": \"<string>\",\n  \"cache\": \"<boolean>\",\n  \"cache_ttl\": \"<integer>\",\n  \"extraction_template\": \"<string>\",\n  \"extraction_prompt\": \"<string>\",\n  \"debug\": \"<boolean>\",\n  \"correlation_id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"webhook_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.scrapfly.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "20ed5941-853b-4b06-9b45-73b4e6a88330",
+    "name": "Scrapfly Scrape Scraping API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Scrapfly Scrape API enables web scraping at scale with anti-bot bypass, proxy rotation, JavaScript rendering, and AI-powered data extraction. One API key unlocks access to web scraping, screenshot capture, structured data extraction, web crawling, and cloud browser automation.",
+      "type": "text/plain"
+    }
+  }
+}

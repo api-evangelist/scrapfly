@@ -11,6 +11,13 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
+  - Artificial Intelligence
+  - Data Extraction
+  - Screenshots
+  - Web Scraping
+  - Proxies
+  - Browser Automation
+tags_raw:
   - AI
   - Data Extraction
   - Screenshots
@@ -43,6 +50,10 @@ apis:
     extraction, and auto-extraction using predefined models for common content types.
   humanURL: https://scrapfly.io/docs/scrape-api/extraction
   tags:
+  - Data Extraction
+  - Artificial Intelligence
+  - Structured Data
+  tags_raw:
   - Data Extraction
   - AI
   - Structured Data

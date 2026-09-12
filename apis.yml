@@ -172,6 +172,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/json-ld/scrapfly-context.jsonld
 common:
+  - type: Website
+    url: https://www.scrapfly.io/
   - type: AgentCard
     url: a2a/scrapfly-a2a.yml
     name: A2A Agent Card

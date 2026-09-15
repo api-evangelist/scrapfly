@@ -194,6 +194,8 @@ common:
     url: https://scrapfly.io/llms.txt
   - url: https://scrapfly.io/blog/rss/
     type: Blog
+  - type: Support
+    url: mailto:sales@scrapfly.io
 integrations:
   - name: Zapier
   - name: n8n

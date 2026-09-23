@@ -1,8 +1,7 @@
 {
   "provider": "scrapfly",
   "sources": [
-    "scrapfly-scraping-api-openapi.yml",
-    "scrapfly-screenshots-api-openapi.yml"
+    "_original/scrapfly-scrape-openapi.yml"
   ],
   "outputs": [
     "scrapfly-scraping-api-openapi.yml",
@@ -11,6 +10,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "scrapfly-scrape-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "scrapfly-scrape-openapi.yml: declared missing tag: Scraping",
+    "scrapfly-scrape-openapi.yml: declared missing tag: Screenshots",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "scrapfly-scraping-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "scrapfly-screenshots-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

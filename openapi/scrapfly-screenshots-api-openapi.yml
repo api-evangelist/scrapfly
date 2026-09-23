@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Scrapfly Scrape Scraping Screenshots API
+  title: Scrapfly Scrape Screenshots API
   description: The Scrapfly Scrape API enables web scraping at scale with anti-bot bypass, proxy rotation, JavaScript rendering, and AI-powered data extraction. One API key unlocks access to web scraping, screenshot capture, structured data extraction, web crawling, and cloud browser automation.
   version: '1.0'
   contact:

@@ -42,6 +42,7 @@ tags:
   - Web Scraping
   - Proxies
   - Browser Automation
+  - A2A
 tags_raw:
   - AI
   - Data Extraction
@@ -49,6 +50,7 @@ tags_raw:
   - Web Scraping
   - Proxies
   - Browser Automation
+  - A2A
 created: '2025-02-08'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/scrapfly/refs/heads/main/apis.yml
@@ -205,3 +207,10 @@ integrations:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://scrapfly.io/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404

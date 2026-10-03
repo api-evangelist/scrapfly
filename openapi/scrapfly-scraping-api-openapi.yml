@@ -296,65 +296,6 @@ paths:
           description: Rate limited
 components:
   schemas:
-    ScrapeResponse:
-      type: object
-      properties:
-        result:
-          type: object
-          properties:
-            content:
-              type: string
-              description: Scraped page content (HTML, markdown, text, etc.)
-            content_type:
-              type: string
-              description: Content MIME type
-            url:
-              type: string
-              description: Final URL after redirects
-            status_code:
-              type: integer
-              description: HTTP status code of the scraped page
-            cookies:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value:
-                    type: string
-            request_headers:
-              type: object
-              additionalProperties:
-                type: string
-            response_headers:
-              type: object
-              additionalProperties:
-                type: string
-            screenshots:
-              type: object
-              description: Screenshot data keyed by selector name
-            dns:
-              type: object
-              description: DNS information if dns=true
-            ssl:
-              type: object
-              description: SSL/TLS certificate information if ssl=true
-            extracted_data:
-              type: object
-              description: Structured data extracted via template or LLM
-        context:
-          type: object
-          properties:
-            api_cost:
-              type: integer
-              description: Credits charged for this request
-            remaining_credits:
-              type: integer
-              description: Remaining API credits
-            attempts:
-              type: integer
-              description: Number of retry attempts
     ScrapeRequest:
       type: object
       required:
@@ -437,6 +378,65 @@ components:
         webhook_name:
           type: string
           description: Webhook for async response delivery
+    ScrapeResponse:
+      type: object
+      properties:
+        result:
+          type: object
+          properties:
+            content:
+              type: string
+              description: Scraped page content (HTML, markdown, text, etc.)
+            content_type:
+              type: string
+              description: Content MIME type
+            url:
+              type: string
+              description: Final URL after redirects
+            status_code:
+              type: integer
+              description: HTTP status code of the scraped page
+            cookies:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value:
+                    type: string
+            request_headers:
+              type: object
+              additionalProperties:
+                type: string
+            response_headers:
+              type: object
+              additionalProperties:
+                type: string
+            screenshots:
+              type: object
+              description: Screenshot data keyed by selector name
+            dns:
+              type: object
+              description: DNS information if dns=true
+            ssl:
+              type: object
+              description: SSL/TLS certificate information if ssl=true
+            extracted_data:
+              type: object
+              description: Structured data extracted via template or LLM
+        context:
+          type: object
+          properties:
+            api_cost:
+              type: integer
+              description: Credits charged for this request
+            remaining_credits:
+              type: integer
+              description: Remaining API credits
+            attempts:
+              type: integer
+              description: Number of retry attempts
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

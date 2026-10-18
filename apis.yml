@@ -138,6 +138,8 @@ apis:
   description: The Scraping API from Scrapfly — 1 operation(s) for scraping.
   humanURL: https://scrapfly.io/docs/scrape-api/getting-started
   tags:
+  - Web Scraping
+  tags_raw:
   - Scraping
   properties:
   - type: OpenAPI
